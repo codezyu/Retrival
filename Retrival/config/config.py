@@ -20,8 +20,8 @@ def load_arg():
     return arg
 def get_arg():
     return {
-        'trainpath':'1',
-        'valpath':'2',
+        'trainpath':'/home/sata/zsb/zyu/ImageRetrieval-LSH/cirtorch/ImageRetrieval_dataset',
+        'valpath':'/home/sata/zsb/zyu/ImageRetrieval-LSH/cirtorch/ImageRetrieval_dataset',
         'imsize':224,
         'batch_size':128,
         'workers':8,
