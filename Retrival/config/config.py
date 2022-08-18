@@ -25,5 +25,8 @@ def get_arg():
         'batch_size':128,
         'workers':8,
         'valQsize':float('Inf'),
-        'valPoolsize':float('Inf')
+        'valPoolsize':float('Inf'),
+        'benchmark':True,
+        'lr':3e-4,
+        'weight_decay':1e-5
     }

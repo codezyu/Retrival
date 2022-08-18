@@ -11,5 +11,5 @@ def getDataLoader(dataset,batch_size,workers):
                                        pin_memory=True,#lock the memory to accerlate
                                        sampler=None,
                                        drop_last=False,#remain the less category
-                                       collate_fn=collate_tuples,
+                                       collate_fn=collate_tuples,#more data process
                                        )
