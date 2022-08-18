@@ -41,6 +41,7 @@ class TuplesDataset(data.Dataset):
     def __init__(self, mode, path,imsize=None, nnum=5, qsize=2000, poolsize=20000, transform=None, loader=default_loader):
         if not (mode == 'train' or mode == 'val'):
             raise(RuntimeError("MODE should be either train or val, passed as string"))
+        self.name=path
         ims_root=path
         db_fn=os.path.join(ims_root, '{}.pkl'.format('data'))
         with open(db_fn, 'rb') as f:
