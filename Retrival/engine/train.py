@@ -1,12 +1,7 @@
-from torch.testing._internal.common_quantization import AverageMeter
-#trainer
 from ignite.engine import Events,create_supervised_trainer,create_supervised_evaluator
 from ignite.handlers import Timer,TerminateOnNan,ModelCheckpoint
 from ignite.metrics import Loss,RunningAverage,Accuracy
 def train(train_loader, val_loader,model, criterion, optimizer, epoch,writer,log_interval):
-    batch_time = AverageMeter()
-    data_time = AverageMeter()
-    losses = AverageMeter()
     trainer=create_supervised_trainer(model,optimizer,criterion)
     valMetrics={
         'accuracy':Accuracy(),

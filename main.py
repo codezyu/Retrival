@@ -33,7 +33,7 @@ if __name__=='__main__':
     model = nn.DataParallel(model, device_ids=deviceId).cuda(masterDevice)
     torch.backends.cudnn.benchmark = arg['benchmark']
     #train,valid
-    optimizer=getoptimizer(arg)
+    optimizer=getoptimizer(arg,model)
     scheduler=getscheduler(arg,optimizer)
     criterion=getloss(arg).cuda()
     epoch=arg['epoch']

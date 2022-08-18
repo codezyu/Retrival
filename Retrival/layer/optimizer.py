@@ -1,4 +1,3 @@
 import torch
-
-def getoptimizer(arg):
-    return torch.optim.Adam(lr=arg['lr'],weight_decay=arg['weight_decay'])
+def getoptimizer(arg,model):
+    return torch.optim.Adam(model.net.parameters(),lr=arg['lr'],weight_decay=arg['weight_decay'])
