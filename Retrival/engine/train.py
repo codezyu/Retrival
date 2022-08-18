@@ -10,8 +10,8 @@ def train(train_loader, val_loader,model, criterion, optimizer, epoch,writer,log
     evaluator=create_supervised_evaluator(model,metrics=valMetrics)
     @trainer.on(Events.EPOCH_STARTED)
     def createdata():
-        train_loader.create_epoch_tuples(model)
-        val_loader.create_epoch_tuples(model)
+        train_loader.dataset.create_epoch_tuples(model)
+        val_loader.dataset.create_epoch_tuples(model)
     @trainer.on(Events.ITERATION_COMPLETED(every=log_interval))
     def log_training_loss(trainer):
         print("Epoch[{}] Loss: {:.2f}".format(trainer.state.epoch, trainer.state.output))
