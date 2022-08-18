@@ -17,3 +17,13 @@ def load_arg():
 
     arg = parser.parse_args()
     return arg
+def get_arg():
+    return {
+        'trainpath':'1',
+        'valpath':'2',
+        'imsize':224,
+        'batch_size':128,
+        'workers':8,
+        'valQsize':float('Inf'),
+        'valPoolsize':float('Inf')
+    }

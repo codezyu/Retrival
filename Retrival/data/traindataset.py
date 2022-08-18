@@ -45,7 +45,7 @@ class TuplesDataset(data.Dataset):
         db_fn=os.path.join(ims_root, '{}.pkl'.format('data'))
         with open(db_fn, 'rb') as f:
             db = pickle.load(f)[mode]
-        self.images = [os.path.join(ims_root, db['cids'][i]) for i in range(len(db['cids']))]
+        self.images = [os.path.join(ims_root+'/'+mode, db['cids'][i]) for i in range(len(db['cids']))]
         # initializing tuples dataset
         self.mode = mode
         self.imsize = imsize
