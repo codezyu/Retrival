@@ -1,3 +1,4 @@
+import math
 from argparse import ArgumentParser
 
 
@@ -28,5 +29,7 @@ def get_arg():
         'valPoolsize':float('Inf'),
         'benchmark':True,
         'lr':3e-4,
-        'weight_decay':1e-5
+        'weight_decay':1e-5,
+        'gamma':math.exp(0.01),
+        'epoch':100,
     }

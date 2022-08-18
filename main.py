@@ -1,10 +1,13 @@
+import numpy as np
 import torch
 from torch import nn
 from torchvision.transforms import transforms
 
 from Retrival.config.config import get_arg
 from Retrival.data.dataloader import getDataLoader
+from Retrival.engine.train import train
 from Retrival.layer.optimizer import getoptimizer
+from Retrival.layer.scheduler import getscheduler
 from Retrival.util.deviceInfo import get_free_device_ids
 from Retrival.model.build import buildModel
 from Retrival.data.traindataset import TuplesDataset
@@ -28,6 +31,18 @@ if __name__=='__main__':
     #multi
     model = nn.DataParallel(model, device_ids=deviceId).cuda(masterDevice)
     torch.backends.cudnn.benchmark = arg['benchmark']
-    #train
+    #train,valid
     optimizer=getoptimizer(arg)
-    #valid
+    scheduler=getscheduler(arg,optimizer)
+    epoch=arg['epoch']
+    np.random.seed(epoch)
+    torch.manual_seed(epoch)
+    torch.cuda.manual_seed_all(epoch)
+    train(train_loader=trainloader,
+          val_loader=validloader,
+          model=model,
+          criterion=,
+          optimizer=optimizer,
+          epoch=epoch,
+          writer=None,
+          log_interval=10)
