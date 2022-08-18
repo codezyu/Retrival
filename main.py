@@ -35,7 +35,7 @@ if __name__=='__main__':
     #train,valid
     optimizer=getoptimizer(arg)
     scheduler=getscheduler(arg,optimizer)
-    criterion=getloss(arg)
+    criterion=getloss(arg).cuda()
     epoch=arg['epoch']
     np.random.seed(epoch)
     torch.manual_seed(epoch)
