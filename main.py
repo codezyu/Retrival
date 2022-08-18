@@ -6,6 +6,7 @@ from torchvision.transforms import transforms
 from Retrival.config.config import get_arg
 from Retrival.data.dataloader import getDataLoader
 from Retrival.engine.train import train
+from Retrival.layer.loss import getloss
 from Retrival.layer.optimizer import getoptimizer
 from Retrival.layer.scheduler import getscheduler
 from Retrival.util.deviceInfo import get_free_device_ids
@@ -34,6 +35,7 @@ if __name__=='__main__':
     #train,valid
     optimizer=getoptimizer(arg)
     scheduler=getscheduler(arg,optimizer)
+    criterion=getloss(arg)
     epoch=arg['epoch']
     np.random.seed(epoch)
     torch.manual_seed(epoch)
@@ -41,7 +43,7 @@ if __name__=='__main__':
     train(train_loader=trainloader,
           val_loader=validloader,
           model=model,
-          criterion=,
+          criterion=criterion,
           optimizer=optimizer,
           epoch=epoch,
           writer=None,

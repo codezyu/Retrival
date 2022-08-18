@@ -32,4 +32,5 @@ def get_arg():
         'weight_decay':1e-5,
         'gamma':math.exp(0.01),
         'epoch':100,
+        'loss_margin':0.75
     }
