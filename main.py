@@ -30,12 +30,12 @@ if __name__=='__main__':
     masterDevice=deviceId[0]
     model.cuda(masterDevice)
     #multi
+    optimizer = getoptimizer(arg, model)
+    scheduler = getscheduler(arg, optimizer)
+    criterion = getloss(arg).cuda()
     model = nn.DataParallel(model, device_ids=deviceId).cuda(masterDevice)
     torch.backends.cudnn.benchmark = arg['benchmark']
     #train,valid
-    optimizer=getoptimizer(arg,model)
-    scheduler=getscheduler(arg,optimizer)
-    criterion=getloss(arg).cuda()
     epoch=arg['epoch']
     np.random.seed(epoch)
     torch.manual_seed(epoch)
